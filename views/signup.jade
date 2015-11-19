@@ -1,0 +1,10 @@
+html
+  head
+    title= title
+  body
+    h1 Signup
+    div
+      form(action='/api/signup', method='post')
+        label(for="username") Name:
+        input(id="username", type="text", name="username", placeholder="username")
+        input(type="submit" value="Submit")
