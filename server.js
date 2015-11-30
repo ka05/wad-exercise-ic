@@ -35,21 +35,12 @@ router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
 
+// send signup page to client
 router.get('/signup', function(req, res){
   res.render('signup', {title:'signup'});
 });
 
-// for users page
-router.get('/users', function(req, res){
-  User.find({}, function(err, users){
-    var resUsers = [];
-    users.forEach(function(user) {
-      resUsers.push(user.username);
-    });
-    res.render('users', {title:'users', users:resUsers});
-  });
-});
-
+// get data from client
 router.post('/signup', function(req, res){
   var username = req.body.username;
 
@@ -65,6 +56,16 @@ router.post('/signup', function(req, res){
   res.send('success: ' + username);
 });
 
+// for users page
+router.get('/users', function(req, res){
+  User.find({}, function(err, users){
+    var resUsers = [];
+    users.forEach(function(user) {
+      resUsers.push(user.username);
+    });
+    res.render('users', {title:'users', users:resUsers});
+  });
+});
 
 // more routes for our API will happen here
 
